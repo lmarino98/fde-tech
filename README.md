@@ -58,6 +58,7 @@ def sort(width, height, length, mass) -> str
 -   `"REJECTED"` - Packages that cannot be processed
 -   `"Error"` - Different type of errors depending on the case (type, Infinite, None, etc...)
 
+```
 Input Validation
 ↓
 Valid Input?
@@ -81,7 +82,7 @@ Check if Heavy
 │ Yes │ Yes │ REJECTED │
 └─────────────┴─────────────┴
 
-````
+```
 
 ## Testing
 
@@ -105,7 +106,7 @@ The system includes comprehensive test cases covering:
 
 ```bash
 python package_sorter.py
-````
+```
 
 This will run all test cases and display the results for verification.
 
