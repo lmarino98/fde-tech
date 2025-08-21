@@ -74,12 +74,12 @@ Check if Heavy
 (Mass ≥ 20 kg)
 ↓
 ┌───────────────────────────┐
-│ Heavy? │ Bulky? │ Result │
+│ Heavy? │ Bulky? │ Result  │
 ├───────────────────────────┼
-│ No │ No │ STANDARD │
-│ Yes │ No │ SPECIAL │
-│ No │ Yes │ SPECIAL │
-│ Yes │ Yes │ REJECTED │
+│ No  │ No    │ STANDARD    │
+│ Yes │ No    │ SPECIAL     │
+│ No  │ Yes   │ SPECIAL     │
+│ Yes │ Yes   │ REJECTED    │
 └─────────────┴─────────────┴
 
 ```
