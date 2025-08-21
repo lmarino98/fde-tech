@@ -45,123 +45,38 @@ if __name__ == "__main__":
     print("STANDARD TEST CASES")
     print("="*60)
     
-    print("\nStandard package:")
-    result1 = sort(50, 50, 50, 10)
-    print(f"Package (50x50x50 cm, 10 kg) -> {result1}")
+    # Basic test cases
+    test_cases = [
+        ("Standard package", 50, 50, 50, 10),
+        ("Heavy package", 50, 50, 50, 25),
+        ("Bulky package (by volume)", 100, 100, 100, 10),
+        ("Bulky package (by dimension)", 160, 50, 50, 10),
+        ("Rejected package", 160, 50, 50, 25),
+        ("Edge case", 150, 50, 50, 20),
+    ]
     
-    print("\nHeavy package:")
-    result2 = sort(50, 50, 50, 25)
-    print(f"Package (50x50x50 cm, 25 kg) -> {result2}")
-    
-    print("\nBulky package (by volume):")
-    result3 = sort(100, 100, 100, 10)
-    print(f"Package (100x100x100 cm, 10 kg) -> {result3}")
-    
-    print("\nBulky package (by dimension):")
-    result4 = sort(160, 50, 50, 10)
-    print(f"Package (160x50x50 cm, 10 kg) -> {result4}")
-    
-    print("\nRejected package:")
-    result5 = sort(160, 50, 50, 25)
-    print(f"Package (160x50x50 cm, 25 kg) -> {result5}")
-    
-    print("\nEdge case:")
-    result6 = sort(150, 50, 50, 20)
-    print(f"Package (150x50x50 cm, 20 kg) -> {result6}")
-    
-    print("\nMicroscopic package:")
-    result7 = sort(0.001, 0.001, 0.001, 0.001)
-    print(f"Package (0.001x0.001x0.001 cm, 0.001 kg) -> {result7}")
-    
-    print("\nGiant spaghetti box:")
-    result8 = sort(500, 5, 5, 2)
-    print(f"Package (500x5x5 cm, 2 kg) -> {result8}")
-    
-    print("\nBalloon package:")
-    result9 = sort(300, 300, 300, 0.5)
-    print(f"Package (300x300x300 cm, 0.5 kg) -> {result9}")
-
-    print("\nPaper-thin wide package:")
-    result10 = sort(1000, 1000, 0.01, 5)
-    print(f"Package (1000x1000x0.01 cm, 5 kg) -> {result10}")
-    
-    print("\nTheoretical zero-width package:")
-    result11 = sort(0, 100, 100, 10)
-    print(f"Package (0x100x100 cm, 10 kg) -> {result11}")
-
-    print("\nAlmost heavy package:")
-    result12 = sort(50, 50, 50, 19.999999)
-    print(f"Package (50x50x50 cm, 19.999999 kg) -> {result12}")
-    
-    print("\nTelephone pole package:")
-    result13 = sort(2000, 20, 20, 100)
-    print(f"Package (2000x20x20 cm, 100 kg) -> {result13}")
-    
-    print("\nWeird shape at volume threshold:")
-    result14 = sort(1000, 10, 100, 8)
-    print(f"Package (1000x10x100 cm, 8 kg) -> {result14}")
+    for name, w, h, l, m in test_cases:
+        result = sort(w, h, l, m)
+        print(f"\n{name}:")
+        print(f"Package ({w}x{h}x{l} cm, {m} kg) -> {result}")
     
     print("\n" + "="*60)
-    print("EDGE CASES AND INPUT VALIDATION TESTS")
+    print("ERROR HANDLING TESTS")
     print("="*60)
     
-    print("\nNegative dimensions:")
-    result15 = sort(-10, 50, 50, 10)
-    print(f"Package (-10x50x50 cm, 10 kg) -> {result15}")
+    error_cases = [
+        ("Negative dimensions", -10, 50, 50, 10),
+        ("Negative mass", 50, 50, 50, -5),
+        ("Zero width", 0, 50, 50, 10),
+        ("String input", "50", "50", "50", "10"),
+        ("Invalid string", "abc", 50, 50, 10),
+        ("None input", None, 50, 50, 10),
+        ("Infinite dimension", float('inf'), 50, 50, 10),
+        ("NaN dimension", float('nan'), 50, 50, 10),
+    ]
     
-    print("\nNegative mass:")
-    result16 = sort(50, 50, 50, -5)
-    print(f"Package (50x50x50 cm, -5 kg) -> {result16}")
-    
-    print("\nZero width:")
-    result17 = sort(0, 50, 50, 10)
-    print(f"Package (0x50x50 cm, 10 kg) -> {result17}")
-    
-    print("\nZero mass:")
-    result18 = sort(50, 50, 50, 0)
-    print(f"Package (50x50x50 cm, 0 kg) -> {result18}")
-    
-    print("\nAll zeros:")
-    result19 = sort(0, 0, 0, 0)
-    print(f"Package (0x0x0 cm, 0 kg) -> {result19}")
-    
-    print("\nString input:")
-    result20 = sort("50", "50", "50", "10")
-    print(f"Package ('50'x'50'x'50' cm, '10' kg) -> {result20}")
-    
-    print("\nInvalid string:")
-    result21 = sort("abc", 50, 50, 10)
-    print(f"Package ('abc'x50x50 cm, 10 kg) -> {result21}")
-    
-    print("\nNone input:")
-    result22 = sort(None, 50, 50, 10)
-    print(f"Package (None x 50 x 50 cm, 10 kg) -> {result22}")
-    
-    print("\nInfinite dimension:")
-    result23 = sort(float('inf'), 50, 50, 10)
-    print(f"Package (inf x 50 x 50 cm, 10 kg) -> {result23}")
-    
-    print("\nInfinite mass:")
-    result24 = sort(50, 50, 50, float('inf'))
-    print(f"Package (50x50x50 cm, inf kg) -> {result24}")
-    
-    print("\nNaN dimension:")
-    result25 = sort(float('nan'), 50, 50, 10)
-    print(f"Package (NaN x 50 x 50 cm, 10 kg) -> {result25}")
-    
-    print("\nExtremely large dimension:")
-    result26 = sort(1e20, 1e20, 1e20, 10)
-    print(f"Package (1e20 x 1e20 x 1e20 cm, 10 kg) -> {result26}")
-    
-    print("\nInteger inputs:")
-    result27 = sort(100, 100, 100, 15)
-    print(f"Package (100x100x100 cm, 15 kg) -> {result27}")
-    
-    print("\nMixed valid/invalid:")
-    result28 = sort(50, "invalid", 50, 10)
-    print(f"Package (50 x 'invalid' x 50 cm, 10 kg) -> {result28}")
-    
-    print("\nBoolean inputs:")
-    result29 = sort(True, False, True, True)
-    print(f"Package (True x False x True cm, True kg) -> {result29}")
+    for name, w, h, l, m in error_cases:
+        result = sort(w, h, l, m)
+        print(f"\n{name}:")
+        print(f"Package ({w}x{h}x{l} cm, {m} kg) -> {result}")
 
